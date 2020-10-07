@@ -45,7 +45,14 @@ export default class App extends Component {
   }
 
   handleEdit = (id) => {
-    console.log(id)
+    const item = this.state.items.find((item) => item.id === id)
+    const itemsFiltered = this.state.items.filter((item) => item.id !== id)
+    this.setState({
+      item: item.title,
+      id: id,
+      items: itemsFiltered,
+      editItem: true
+    })
   }
 
   render() {
