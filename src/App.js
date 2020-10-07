@@ -6,20 +6,29 @@ import TodoInput from './components/TodoInput';
 
 export default class App extends Component {
   state = {
-    items: [{ id: 1, title: 'first task' },
-    { id: 2, title: 'second task' },
-    { id: 3, title: 'third task' }
-    ],
+    items: [],
     id: uuidv4(),
     item: '',
     editItem: false
   }
   handleChange = (e) => {
-    console.log('handleChange')
+    this.setState({
+      item: e.target.value
+    })
   }
 
   handleSubmit = (e) => {
-    console.log('handleSubmit')
+    e.preventDefault();
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item
+    }
+    this.setState({
+      items: [...this.state.items, newItem],
+      id: uuidv4(),
+      item: '',
+      editItem: false
+    })
   }
 
   clearList = () => {
