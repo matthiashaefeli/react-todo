@@ -32,11 +32,16 @@ export default class App extends Component {
   }
 
   clearList = () => {
-    console.log('clearList')
+    this.setState({
+      items: []
+    })
   }
 
   handleDelete = (id) => {
-    console.log(id)
+    const itemsFiltered = this.state.items.filter((item) => item.id !== id)
+    this.setState({
+      items: itemsFiltered
+    })
   }
 
   handleEdit = (id) => {
